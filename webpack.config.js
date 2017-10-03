@@ -1,4 +1,5 @@
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -54,6 +55,9 @@ module.exports = {
       filename: 'styles.css', 
       disable: false, 
       allChunks: true 
+    }),
+    new HtmlWebpackPlugin({
+      template: './index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
