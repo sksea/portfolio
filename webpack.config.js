@@ -1,5 +1,6 @@
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
@@ -24,16 +25,16 @@ module.exports = {
     ],
     rules: [
 			{
-        test: /\.scss/,
+        test: /\.scss$/,
         use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader','sass-loader'],
         })),
       },
 			{
-				test: /\.(js)$/,
-				exclude: /(node_modules|bower_components)/,
-				use : ['babel-loader']
+        test: /\.(js)$/,
+        exclude: /(node_modules|bower_components)/,
+        use : ['babel-loader']
       },
       {
         test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
@@ -54,14 +55,15 @@ module.exports = {
       disable: false, 
       allChunks: true 
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(__dirname),
+    // contentBase: path.join(__dirname),
     hot: true,
-    compress: true,
     inline: true,
-    port: 8000,
+    compress: true,
+    port: 9000,
     watchContentBase: true
   }
 };
