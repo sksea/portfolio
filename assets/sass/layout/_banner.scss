@@ -9,6 +9,18 @@
 	#banner {
 		@include padding(10em, 0, (0, 0, _size(wrapper-edges, large) * -0.5, 0));
 
+		.social {
+			a {
+				display: inline-block;
+				border: none;
+				margin-right: 1.2em;
+			}
+
+			.fa {
+				font-size: 1.2em;
+			}
+		}
+
 		.inner {
 			margin: 0 auto;
 			width: _size(inner);
@@ -47,7 +59,8 @@
 			@include vendor('filter', 'blur(0)');
 			opacity: 1;
 			border-bottom: solid 2px _palette(border);
-			font-size: 2.25em;
+			font-size: 1.75em;
+			letter-spacing: 0.15em;
 			margin-bottom: _size(element-margin) * 0.4;
 			padding-bottom: _size(element-margin) * 0.2;
 		}
@@ -63,7 +76,7 @@
 			@include vendor('filter', 'blur(0)');
 			opacity: 1;
 			font-family: _font(family-heading);
-			font-size: 1em;
+			font-size: .8em;
 			font-weight: _font(weight-heading);
 			letter-spacing: _font(kern-heading);
 			line-height: 2;
@@ -75,8 +88,8 @@
 
 			background-color:		_palette(bg);
 
-			background-image:		linear-gradient(to top, transparentize(_palette(bg), 0.2), transparentize(_palette(bg), 0.2)),
-									url('../../images/bg.jpg');
+			// background-image:		linear-gradient(to top, transparentize(_palette(bg), 0.2), transparentize(_palette(bg), 0.2)),
+			// 						url('../../images/bg.jpg');
 
 			background-size:		auto,
 									cover;

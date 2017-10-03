@@ -45,7 +45,7 @@
 			color: _palette(fg-bold) !important;
 		}
 
-		&.special:not(.button) {
+		&.special:not(.button), &.github:not(.button), &.live:not(.button) {
 			@include icon;
 			border-bottom: 0;
 			display: block;
@@ -84,6 +84,24 @@
 				}
 			}
 		}
+
+		&.github:not(.button), &.live:not(.button) {
+			display: inline-block;
+			margin: 0 1em;
+		}
+
+		&.github:not(.button) {
+			&:before {
+				content: '\f126';
+			}
+		}
+
+		 &.live:not(.button) {
+			&:before {
+				content: '\f0ac';
+			}
+		}
+
 	}
 
 	strong, b {

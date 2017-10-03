@@ -25,14 +25,14 @@ module.exports = {
       },
     ],
     rules: [
-			{
+      {
         test: /\.scss$/,
         use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader','sass-loader'],
         })),
       },
-			{
+      {
         test: /\.(js)$/,
         exclude: /(node_modules|bower_components)/,
         use : ['babel-loader']
@@ -43,22 +43,22 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
+              name: '[name].[ext]',
             }
           }
         ]
-      }
-		]
+      },
+    ]
   },
   plugins: [
     new ExtractTextWebpackPlugin({ 
-      filename: 'styles.css', 
+      filename: 'styles.css',   
       disable: false, 
       allChunks: true 
     }),
-    new HtmlWebpackPlugin({
-      template: './index.html'
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './index.html'
+    // }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devtool: 'inline-source-map',
@@ -68,6 +68,5 @@ module.exports = {
     inline: true,
     compress: true,
     port: 9000,
-    watchContentBase: true
   }
 };
