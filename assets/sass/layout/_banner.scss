@@ -9,6 +9,14 @@
 	#banner {
 		@include padding(10em, 0, (0, 0, _size(wrapper-edges, large) * -0.5, 0));
 
+		.resume {
+			border-bottom: none;
+		}
+
+		.description {
+			text-transform: none;
+		}
+
 		.social {
 			a {
 				display: inline-block;
