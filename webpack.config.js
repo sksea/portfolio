@@ -1,7 +1,12 @@
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const PRODUCTION = process.env.NODE_ENV === 'production';
+const publicPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: [
@@ -10,8 +15,8 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/'
+    path: path.resolve(__dirname, 'dist')
+    // publicPath
   },
   module: {
     loaders: [
@@ -56,9 +61,6 @@ module.exports = {
       disable: false, 
       allChunks: true 
     }),
-    // new HtmlWebpackPlugin({
-    //   template: './index.html'
-    // }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devtool: 'inline-source-map',
@@ -66,7 +68,6 @@ module.exports = {
     // contentBase: path.join(__dirname),
     hot: true,
     inline: true,
-    compress: true,
-    port: 9000,
+    compress: true
   }
 };
